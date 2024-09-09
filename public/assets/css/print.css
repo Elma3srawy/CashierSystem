@@ -1,0 +1,274 @@
+
+/* General Styles */
+    .container-fluid {
+        padding: 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .page-title {
+        font-size: 1.75rem;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .card {
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-body {
+        padding: 30px;
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    /* Button Styles */
+    .btn {
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 0.9rem;
+        
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border: none;
+        color: #fff;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+        color: #fff;
+    }
+
+    /* Label Styles */
+    .label {
+        font-weight: bold;
+        color: #333;
+        font-size: 1.1rem;
+        margin-right: 10px;
+    }
+
+    /* Customer Info Styles */
+    .customer-info {
+        margin-bottom: 20px;
+    }
+
+    .customer-info h2 {
+        font-size: 1.5rem;
+        color: #333;
+        margin-bottom: 15px;
+    }
+
+    .customer-info .info-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .customer-info .info-item .value {
+        color: #555;
+        font-size: 1.1rem;
+    }
+
+    /* Address and Phone Styles */
+    .address-phone {
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.1rem;
+    }
+
+    .address-phone .info-item {
+        flex: 1;
+    }
+    /* General Styles */
+    .table-container {
+        width: 100%; /* Make sure the container spans the full width */
+        overflow-x: auto; /* Allow horizontal scrolling if needed */
+        padding: 0 15px; /* Optional: Adjust padding as needed */
+    }
+    /* Table Styles */
+    /* Table Styles */
+    .table {
+        width: 100%;
+        margin-bottom: 20px;
+        display: table;
+        border-collapse: separate; /* Change from collapse to separate */
+        border-spacing: 0; /* Ensure there's no extra space between cells */
+        border: 1px solid #ddd; /* Add a border around the table */
+        border-radius: 0; /* Remove any border radius */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .table th, .table td {
+        padding: 15px;
+        border-bottom: 1px solid #ddd;
+        text-align: right;
+    }
+
+    .table th {
+        background-color: #f7f7f7;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: #f9f9f9;
+    }
+
+    /* Payment Summary Styles */
+    .payment-summary {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px solid #dee2e6;
+    }
+
+    .summary-item {
+        margin-bottom: 5px;
+        display: flex;
+        justify-content: space-between;
+        direction: rtl;
+    }
+
+    .summary-item .label {
+        font-size: 1rem;
+        color: #495057;
+        font-weight: bold;
+        margin-left: 10px;
+    }
+
+    .summary-item .value {
+        font-size: 1rem;
+        color: #343a40;
+        font-weight: bold;
+    }
+
+    .summary-item.total .label {
+        color: #007bff;
+    }
+
+    .summary-item.total .value {
+        color: #007bff;
+        font-size: 1.25rem;
+    }
+
+    .note-section {
+        background-color: #f8f9fa;
+        padding: 15px 20px;
+        border-left: 4px solid #007bff;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+
+    .note-section p {
+        margin: 0;
+        font-size: 0.875rem;
+        color: #495057;
+    }
+
+    .note-section strong {
+        color: #007bff;
+        font-weight: bold;
+    }
+
+    .note-content {
+        font-size: 1.25rem;
+        font-weight: bold;
+        color: #333;
+    }
+
+    /* Bottom Info Styles */
+    .bottom-info {
+        font-weight: bold;
+        font-size: 1.25rem;
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    .additional-items {
+        font-size: 1rem;
+        color: #333;
+        margin-top: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .additional-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        flex-basis: calc(33.333% - 20px);
+    }
+
+    .additional-item h3 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin-right: 10px;
+        margin-bottom: 0;
+    }
+
+    .additional-item span {
+        font-size: 1rem;
+        color: #333;
+        margin-bottom: 0;
+    }
+    .additional-items {
+    margin-bottom: 20px;
+}
+
+.additional-item h3 {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.additional-item span {
+    font-size: 16px;
+    color: #555;
+}
+
+hr {
+    border: 0;
+    border-top: 2px solid #ccc;
+    margin: 20px 0;
+}
+
+.invoice-dates {
+    display: flex;
+    justify-content: space-between; /* Aligns items to the left and right edges */
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.invoice-date {
+    flex: 1; /* Allows each item to take up equal space */
+    margin-right: 10px; /* Space between items */
+}
+
+.invoice-date:last-child {
+    margin-right: 0; /* Remove margin from the last item */
+}
+
+.invoice-date h3 {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.invoice-date span {
+    font-size: 16px;
+    color: #555;
+}
+@media (max-width: 991.98px) {
+    .table.table-responsive {
+        overflow-x: auto;
+    }
+}
+
+

@@ -1,0 +1,83 @@
+/* Print Styles */
+@media print {
+    /* General Print Styles */
+    @page {
+        size: 300mm 300mm; /* Adjust the size to fit your needs */
+        margin: 0; /* Adjust margins to ensure content is not cut off */
+    }
+
+    /* Hide elements that should not be printed */
+    .no-print {
+        display: none;
+    }
+
+    /* General layout */
+    body {
+        font-family: 'Arial', sans-serif; /* Adjust to a font similar to what Word uses */
+        font-size: 12pt; /* Increase font size for better readability */
+        font-weight: normal; /* Normal weight for general text */
+        line-height: 1.5; /* Increase line height for readability */
+    }
+
+    /* Container to ensure all content fits */
+    .print-container {
+        width: 100%;
+        height: 100%;
+        padding: 5mm; /* Add padding inside the container for better spacing */
+    }
+
+    /* Content adjustment */
+    .content {
+        width: 100%;
+        font-size: 12pt; /* Increase font size for better visibility */
+    }
+
+    /* Table styles */
+    .table-container {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14pt; /* Increase font size for tables */
+    }
+
+    .table-container th,
+    .table-container td {
+        padding: 12px; /* Increase padding for better spacing */
+        border: 1px solid #ddd;
+    }
+
+    .table-container th {
+        font-weight: bold; /* Make table headers bold */
+    }
+
+    /* Ensure images scale appropriately */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Styling for notes and additional information */
+    .note-section p {
+        font-size: 11pt; /* Adjust font size for notes */
+    }
+
+    /* Payment summary and additional items */
+    .payment-summary,
+    .additional-items {
+        font-size: 11pt; /* Increase font size for summaries and additional items */
+    }
+
+    /* Adjust margins and padding */
+    .table-container,
+    .note-section,
+    .payment-summary,
+    .additional-items {
+        margin-bottom: 10px; /* Increase margin for better spacing */
+    }
+
+    /* Card body adjustment */
+    .card-body {
+        width: 100%;
+        padding: 5mm; /* Add padding inside the card body */
+        border: 1px solid #ddd; /* Optional: border for card body */
+    }
+}
