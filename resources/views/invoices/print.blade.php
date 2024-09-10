@@ -155,9 +155,15 @@
                         <div class="col-md-7">
                             <div class="note-section">
                                 <p class="text small">
-                                    <strong>ملحوظة :</strong><b> اقر انا / <span>{{ $invoice->client->name }}</span> بانني استلمت بدلة بحالة جيدة واتعهد بردها يوم <span>{{$invoice->return_date }}</span> في نفس الحالة التي كانت عليها وفي حالة التاخير غرامة 100 جنية عن كل يوم تأخير.</b>
+                                    <strong>اقرار :</strong><b> اقر انا / <span>{{ $invoice->client->name }}</span> بانني استلمت بدلة بحالة جيدة واتعهد بردها يوم <span>{{$invoice->return_date }}</span> في نفس الحالة التي كانت عليها وفي حالة التاخير غرامة 100 جنية عن كل يوم تأخير.</b>
                                 </p>
                             </div>
+                            <p style="padding: 15px; display: flex; align-items: baseline;" class="text small">
+                                <strong>التوقيع :</strong>
+                                <span style="flex-grow: 1; border-bottom: 1px solid #000; margin-left: 10px; height: 1px;"></span>
+                            </p>
+
+
                         </div>
                         @endif
 
