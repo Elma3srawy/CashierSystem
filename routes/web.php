@@ -70,34 +70,7 @@ Route::middleware('auth')->group(function(){
 
 
 
-    Route::get('/send-whatsapp', [WhatsAppController::class, 'sendWhatsAppMessage']);
+    // Route::get('/send-whatsapp', [WhatsAppController::class, 'sendWhatsAppMessage']);
 });
 
 
-
-
-// Route::get('/test' , function(){
-
-//         $start = Carbon::parse('2024-08-02');
-//         $end = Carbon::parse("2024-08-06");
-
-//         $ids = Product::where('section_id', 3)
-//         ->leftJoin('orders', 'orders.product_id', '=', 'products.id')
-//         ->leftJoin('invoices', 'invoices.id', '=', 'orders.invoice_id')
-//         ->where(function ($query) use ($start, $end) {
-//             $query->whereBetween('date_of_receipt', [$start, $end])
-//                 ->orWhereBetween('return_date', [$start, $end])
-//                 ->orWhere(function ($query) use ($start, $end) {
-//                     $query->where('date_of_receipt', '<', $start)
-//                             ->where('return_date', '>', $end);
-//                 });
-//         })
-//         ->pluck('products.id');
-
-//         $products = Product::whereNotIn('id' , $ids)->get();
-//         return $products;
-// });
-
-// ->where('products.quantity' , '>' , '0')
-
-// ['id', 'model', 'color', 'size', 'section_id' ,'quantity']
