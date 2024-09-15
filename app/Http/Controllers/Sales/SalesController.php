@@ -38,10 +38,12 @@ class SalesController extends Controller
         $ids = explode(',', $request->order_ids);
 
         $orders = Order::whereIn('id' , $ids)
-        ->with('invoice:id,client_id' , 'product' , 'addition')
+        ->with(['invoice' => function($query) {
+            $query->withTrashed()->select('id', 'client_id');
+        }, 'product', 'addition'])
         ->select('id' , 'invoice_id','product_id' , 'addition_id','price' , 'payment')
         ->get();
-        // return $orders;
+
         return view('sales.show' , ['orders' => $orders]);
 
     }
