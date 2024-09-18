@@ -37,8 +37,22 @@
           </span>
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">الملف الشخصي</a>
-          {{-- <a class="dropdown-item" href="#">Settings</a> --}}
+           @cannot('access-superAdmin')
+            <a data-toggle="modal" data-target="#changeRoleModal" class="dropdown-item" href="#"><span class="ml-1 item-text">تغير الصلاحيات</span>
+            </a>
+           @endcannot
+           @can('access-superAdmin')
+           <form id="changeRole-form" action="{{ route('admin.deleteRole') }}" method="POST" style="display: none;">
+                @method('DELETE')
+                @csrf
+            </form>
+            <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('changeRole-form').submit();">
+                تغيير الصلاحيات
+            </a>
+           @endcan
+
+            <a class="dropdown-item" href="#">الملف الشخصي</a>
+
           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
         </form>
@@ -49,3 +63,33 @@
       </li>
     </ul>
   </nav>
+
+
+
+  <!-- Modal for Changing Password -->
+<div class="modal fade" id="changeRoleModal" tabindex="-1" role="dialog" aria-labelledby="changeRoleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="changeRoleModalLabel">تغير الصلاحيات</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{{ route('admin.changeRole') }}" method="POST">
+                @csrf
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="password">كلمة السر:</label>
+                        <input type="password" name="secret" class="form-control" id="password" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">غلق</button>
+                    <button type="submit" class="btn btn-primary">تحديث الصلاحيات</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

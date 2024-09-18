@@ -12,6 +12,10 @@ class ClientController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function __construct()
+    {
+        $this->middleware('super.admin')->except('index');
+    }
     public function index()
     {
         $clients = Client::paginate(PAGINATE);

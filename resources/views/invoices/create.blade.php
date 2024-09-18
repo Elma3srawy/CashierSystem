@@ -41,7 +41,7 @@
                 <div class="col-md-12 mb-30">
                     <div class="card card-statistics h-100">
                         <div class="card-body">
-                                <form class=" row mb-30" action="{{ route('invoice.store') }}" method="POST">
+                                <form id="myForm"  class=" row mb-30" action="{{ route('invoice.store') }}" method="POST">
                                     @csrf
                                     <div class="card-body">
                                             <div class="form-row">
@@ -203,10 +203,12 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
                                         <br>
                                         <button type="submit" class="btn btn-primary">تاكيد البيانات</button>
-
+                                        {{-- <button type="submit" class="btn btn-primary" onclick="this.disabled = true;">تاكيد البيانات</button> --}}
+                                        {{-- <button type="submit" class="btn btn-primary" onclick="submitForm(this);">تاكيد البيانات</button> --}}
+                                        {{-- <button type="submit" class="btn btn-primary" onclick="this.disabled = true; this.innerText='Processing...';">تاكيد البيانات</button> --}}
                                     </div>
                                 </div> <!-- /. card-body -->
                                 </form>
@@ -536,6 +538,14 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+</script>
+
+<script>
+    document.getElementById('myForm').addEventListener('submit', function(event) {
+        var button = event.target.querySelector('button[type="submit"]');
+        button.disabled = true;
+        button.textContent = 'جاري تنفيذ طلبك';
+    });
 </script>
 @endsection
 

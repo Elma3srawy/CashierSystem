@@ -92,15 +92,16 @@
           </a>
           <ul class="collapse list-unstyled pl-4 w-100 w-100" id="pages">
             <li class="nav-item">
+                <a class="nav-link pl-3" href="{{ route('invoice.create') }}">
+                  <span class="ml-1 item-text">اضافة فاتورة</span>
+                </a>
+            </li>
+            @can('access-superAdmin')
+            <li class="nav-item">
               <a class="nav-link pl-3" href="{{ route('invoice.index') }}">
                 <span class="ml-1 item-text">عرض جميع الفواتير</span>
               </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link pl-3" href="{{ route('invoice.create') }}">
-                  <span class="ml-1 item-text">اضافة فاتورة</span>
-                </a>
-              </li>
             <li class="nav-item">
               <a class="nav-link pl-3" href="{{ route('invoice.pending') }}">
                 <span class="ml-1 item-text">عرض فواتير الايجار</span>
@@ -111,10 +112,12 @@
                 <span class="ml-1 item-text">عرض فواتير البيع</span>
               </a>
             </li>
+            @endcan
           </ul>
         </li>
 
         <!-- Separate block for sales -->
+        @can('access-superAdmin')
         <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item dropdown">
             <a href="#sales" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
@@ -140,6 +143,8 @@
             </ul>
             </li>
         </ul>
+        @endcan
+
         <p class="text-muted nav-heading mt-4 mb-1">
             <span>العملاء</span>
         </p>

@@ -18,6 +18,12 @@ use App\Http\Requests\InvoiceRequest;
 class InvoiceController extends Controller
 {
     private $invoice;
+
+
+    public function __construct()
+    {
+        $this->middleware(['super.admin'])->except(['create' ,'store' , 'print' , 'getSection' , 'getProductData']);
+    }
     /**
      * Display a listing of the resource.
      */
@@ -187,7 +193,7 @@ class InvoiceController extends Controller
             }
             DB::commit();
             event(new InvoiceProcessed($invoice));
-            return to_route('invoice.print' , $invoice->id);
+            return to_route('invoice.print' , $invoice->id)->with("success" ,'تم اضافة فاتورة بنجاح' );
         }catch (\Exception $e) {
             DB::rollBack();
             return back()->with('error','Failed to insert order');
@@ -200,7 +206,6 @@ class InvoiceController extends Controller
      */
     public function show(string $id)
     {
-
         $this->invoice = Invoice::withTrashed()->with(['client','orders.product', 'orders.addition'])->where('id', $id)->first();
         $orders = $this->invoice->orders;
         return view('invoices.show' , ['orders' => $orders]);

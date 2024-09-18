@@ -47,7 +47,7 @@
                 <div class="card-body">
                   <div class="row align-items-center">
                     <div class="col">
-                      <span class="h2 mb-0">35</span>
+                      <span class="h2 mb-0">$200</span>
                       <p class="small text-muted mb-0" style="font-weight: bold;">حساب الشهر</p>
                     </div>
                     <div class="col-auto">
@@ -62,7 +62,7 @@
                 <div class="card-body">
                   <div class="row align-items-center">
                     <div class="col">
-                      <span class="h2 mb-0">40</span>
+                      <span class="h2 mb-0">$100</span>
                       <p class="small text-muted mb-0" style="font-weight: bold;"> عربونات الشهر</p>
                     </div>
                     <div class="col-auto">
@@ -77,7 +77,7 @@
                 <div class="card-body">
                   <div class="row align-items-center">
                     <div class="col">
-                      <span class="h2 mb-0">2</span>
+                      <span class="h2 mb-0">5</span>
                       <p class="small text-muted mb-0" style="font-weight: bold;">الفواتير</p>
                     </div>
                     <div class="col-auto">
@@ -97,7 +97,7 @@
                   <div class="row align-items-center">
                     <div class="col">
                       <small class="text-muted mb-1">حساب الاسبوع</small>
-                      <h3 class="card-title mb-0">100</h3>
+                      <h3 class="card-title mb-0">$100</h3>
                       <p class="small text-muted mb-0"><span class="fe fe-arrow-up fe-12 text-success"></span><span>37.7% Last week</span></p>
                     </div>
                     <div class="col-4 text-right">
@@ -113,7 +113,7 @@
                   <div class="row align-items-center">
                     <div class="col">
                       <small class="text-muted mb-1">عربونات الاسبوع</small>
-                      <h3 class="card-title mb-0">30</h3>
+                      <h3 class="card-title mb-0">$50</h3>
                       <p class="small text-muted mb-0"><span class="fe fe-arrow-down fe-12 text-danger"></span><span>-18.9% Last week</span></p>
                     </div>
                     <div class="col-4 text-right">
@@ -209,97 +209,6 @@
               </div> <!-- .card -->
             </div> <!-- .col -->
           </div>
-          <!-- info small box -->
-          <div class="row">
-            <div class="col-md-4 mb-4">
-              <div class="card shadow">
-                <div class="card-body">
-                  <div class="row align-items-center">
-                    <div class="col">
-                      <span class="h2 mb-0">40</span>
-                      <p class="small text-muted mb-0" style="font-weight: bold;">حساب الشهر</p>
-                    </div>
-                    <div class="col-auto">
-                      <span class="fe fe-32 fe-shopping-bag text-muted mb-0"></span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 mb-4">
-              <div class="card shadow">
-                <div class="card-body">
-                  <div class="row align-items-center">
-                    <div class="col">
-                      <span class="h2 mb-0">45</span>
-                      <p class="small text-muted mb-0" style="font-weight: bold;"> عربونات الشهر</p>
-                    </div>
-                    <div class="col-auto">
-                        <span class="fe fe-32 fe-clipboard text-muted mb-0"></span>
-                      </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 mb-4">
-              <div class="card shadow">
-                <div class="card-body">
-                  <div class="row align-items-center">
-                    <div class="col">
-                      <span class="h2 mb-0">3</span>
-                      <p class="small text-muted mb-0" style="font-weight: bold;">الفواتير</p>
-                    </div>
-                    <div class="col-auto">
-                      <span class="fe fe-32 fe-shopping-cart text-muted mb-0"></span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> <!-- end section -->
-
-          {{-- <div class="mb-2 align-items-center">
-            <div class="card shadow mb-4">
-              <div class="card-body">
-                <div class="row mt-1 align-items-center">
-                  <div class="col-12 col-lg-4 text-left pl-4">
-                    <p class="mb-1 small text-muted">Balance</p>
-                    <span class="h3">$12,600</span>
-                    <span class="small text-muted">+20%</span>
-                    <span class="fe fe-arrow-up text-success fe-12"></span>
-                    <p class="text-muted mt-2"> Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui </p>
-                  </div>
-                  <div class="col-6 col-lg-2 text-center py-4">
-                    <p class="mb-1 small text-muted">Today</p>
-                    <span class="h3">$2600</span><br />
-                    <span class="small text-muted">+20%</span>
-                    <span class="fe fe-arrow-up text-success fe-12"></span>
-                  </div>
-                  <div class="col-6 col-lg-2 text-center py-4 mb-2">
-                    <p class="mb-1 small text-muted">Goal Value</p>
-                    <span class="h3">$260</span><br />
-                    <span class="small text-muted">+6%</span>
-                    <span class="fe fe-arrow-up text-success fe-12"></span>
-                  </div>
-                  <div class="col-6 col-lg-2 text-center py-4">
-                    <p class="mb-1 small text-muted">Completions</p>
-                    <span class="h3">26</span><br />
-                    <span class="small text-muted">+20%</span>
-                    <span class="fe fe-arrow-up text-success fe-12"></span>
-                  </div>
-                  <div class="col-6 col-lg-2 text-center py-4">
-                    <p class="mb-1 small text-muted">Conversion</p>
-                    <span class="h3">6%</span><br />
-                    <span class="small text-muted">-2%</span>
-                    <span class="fe fe-arrow-down text-danger fe-12"></span>
-                  </div>
-                </div>
-                <div class="chartbox mr-4">
-                  <div id="areaChart"></div>
-                </div>
-              </div> <!-- .card-body -->
-            </div> <!-- .card -->
-          </div> --}}
           <div class="row items-align-baseline">
             <div class="col-md-12 col-lg-4">
               <div class="card shadow eq-card mb-4">
@@ -429,17 +338,17 @@
                       <ul class="avatars-list mb-3">
                         <li>
                           <a href="#!" class="avatar avatar-sm">
-                            <img alt="..." class="avatar-img rounded-circle" src="./assets/avatars/face-1.jpg">
+                            <img alt="..." class="avatar-img rounded-circle" src="#">
                           </a>
                         </li>
                         <li>
                           <a href="#!" class="avatar avatar-sm">
-                            <img alt="..." class="avatar-img rounded-circle" src="./assets/avatars/face-4.jpg">
+                            <img alt="..." class="avatar-img rounded-circle" src="#">
                           </a>
                         </li>
                         <li>
                           <a href="#!" class="avatar avatar-sm">
-                            <img alt="..." class="avatar-img rounded-circle" src="./assets/avatars/face-3.jpg">
+                            <img alt="..." class="avatar-img rounded-circle" src="#">
                           </a>
                         </li>
                       </ul>
