@@ -31,12 +31,20 @@ class SendDeliveryReminders extends Command
     public function handle()
     {
         $tomorrow = Carbon::tomorrow('Africa/Cairo')->toDateString();
+        $now = Carbon::now('Africa/Cairo')->toDateString();
+
         $user = User::first();
-        $invoices = Invoice::leftJoin('clients' , 'clients.id' , 'invoices.client_id')->whereDate('date_of_receipt', $tomorrow)->select('clients.name' , 'clients.id')->get();
+
+        $invoices = Invoice::rightJoin('clients' , 'clients.id' , 'invoices.client_id')
+        ->whereDate('date_of_receipt', $now)
+        ->orWhereDate('date_of_receipt', $tomorrow)
+        ->select('invoices.id AS invoice_id', 'clients.name as client_name', 'invoices.date_of_receipt')
+        ->get();
+
         if(count($invoices) > 0){
-            $user->notify(new DeliveryReminder($invoices, $tomorrow));
+            $user->notify(new DeliveryReminder($invoices));
         }
-        $this->info('Reminders sent successfully.' .$tomorrow);
+        $this->info('Reminders sent successfully.' .$tomorrow . 'and' . $now);
     }
 
 }

@@ -53,7 +53,7 @@
                             <th>الحساب الكلي</th>
                             <th>المدفوع</th>
                             <th>الباقي</th>
-                            {{-- <th class="text-center">العمليه</th> --}}
+                            <th>العمليه</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -98,35 +98,45 @@
                             <td>{{ $sale->total_price ?? 0  }}</td>
                             <td>{{ $sale->payments  ?? 0}}</td>
                             <td>{{ $sale->total_price  - $sale->payments  }}</td>
+                            <td>
+                                @if (is_null($sale->deleted_at))
+                                <button disabled type="button" class="btn btn-warning archive-btn" data-toggle="modal" data-target="#archiveModal" data-archive-id="{{ $sale->id }}">
+                                    أرشفة
+                                </button>
+                                @else
+                                لا توجد
+                                @endif
+                            </td>
                         </tr>
                         @endforeach
                         </tbody>
                     </table>
                     {{ $sales->links() }}
                       <!-- Delete Modal -->
-                        {{-- <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="deleteModalLabel">Delete Confirmation</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        هل انت متاكد من حذف المنتج ؟
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
-                                        <form id="delete-form" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger" id="delete-btn">حذف</button>
-                                        </form>
-                                    </div>
+                      <div class="modal fade" id="archiveModal" tabindex="-1" role="dialog" aria-labelledby="archiveModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="archiveModalLabel">تأكيد الأرشفة</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    هل انت متاكد من ارشفة حساب هذا الاسبوع ؟
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+                                    <form id="archive-form" method="POST">
+                                        @csrf
+                                        @method('PATCH')
+                                        <button type="submit" class="btn btn-warning" id="archive-btn">أرشفة</button>
+                                    </form>
                                 </div>
                             </div>
-                        </div> --}}
+                        </div>
+                    </div>
+
 
                     </div>
                   </div>
@@ -151,21 +161,23 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
 
 
-{{-- <script>
+<script>
     $(document).ready(function() {
-        // Enable all buttons with class "delete-btn"
-        $('.delete-btn').prop('disabled', false);
+        // Enable all buttons with class "archive-btn"
+        $('.archive-btn').prop('disabled', false);
 
-        // Enable the button when the modal is shown
-        $('#deleteModal').on('show.bs.modal', function(event) {
+        // Enable the button when the archive modal is shown
+        $('#archiveModal').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget);
-            var productId = button.data('product-id');
-            var form = $('#delete-form');
-            form.attr('action', '{{ route("products.destroy", ":product") }}'.replace(':product', productId));
-            $('#delete-form button[type="submit"]').removeClass('disabled').prop('disabled', false);
+            var sales_id = button.data('archive-id');
+            var form = $('#archive-form');
+            form.attr('action', '{{ route("sales.archive", ":sales_id") }}'.replace(':sales_id', sales_id));
+            $('#archive-form button[type="submit"]').removeClass('disabled').prop('disabled', false);
         });
     });
 </script>
+
+{{--
 <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() {

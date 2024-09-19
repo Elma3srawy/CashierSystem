@@ -23,6 +23,7 @@
           </a>
         </li>
       </ul>
+      @can('access-superAdmin')
       <p class="text-muted nav-heading mt-4 mb-1">
         <span>المحتوي</span>
       </p>
@@ -79,7 +80,7 @@
             @endif
         @endforeach
     </ul>
-
+    @endcan
 
        <p class="text-muted nav-heading mt-4 mb-1">
         <span>الحسابات</span>
@@ -96,7 +97,6 @@
                   <span class="ml-1 item-text">اضافة فاتورة</span>
                 </a>
             </li>
-            @can('access-superAdmin')
             <li class="nav-item">
               <a class="nav-link pl-3" href="{{ route('invoice.index') }}">
                 <span class="ml-1 item-text">عرض جميع الفواتير</span>
@@ -112,7 +112,6 @@
                 <span class="ml-1 item-text">عرض فواتير البيع</span>
               </a>
             </li>
-            @endcan
           </ul>
         </li>
 
@@ -137,6 +136,31 @@
                 </li>
                 <li class="nav-item">
                 <a class="nav-link pl-3" href="{{ route('sales.inactive') }}">
+                    <span class="ml-1 item-text">البيع</span>
+                </a>
+                </li>
+            </ul>
+            </li>
+        </ul>
+        <ul class="navbar-nav flex-fill w-100 mb-2">
+            <li class="nav-item dropdown">
+            <a href="#archive" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                <i class="fe fe-archive fe-16"></i>
+                <span class="ml-3 item-text">الارشيف</span>
+            </a>
+            <ul class="collapse list-unstyled pl-4 w-100" id="archive">
+                <li class="nav-item">
+                <a class="nav-link pl-3" href="{{ route('sales.archive.all') }}">
+                    <span class="ml-1 item-text">الايجار و البيع</span>
+                </a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link pl-3" href="{{ route('sales.archive.pending') }}">
+                    <span class="ml-1 item-text">الايجار</span>
+                </a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link pl-3" href="{{ route('sales.archive.inactive') }}">
                     <span class="ml-1 item-text">البيع</span>
                 </a>
                 </li>

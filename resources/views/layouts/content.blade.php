@@ -71,23 +71,22 @@
                     @forelse($notifications as $notification)
                         @php
                         $data = $notification->data;
-                        $clients = $data['clients'] ?? [];
-                        $deliveryDate = $data['deliveryDate'] ?? 'غير متوفر';
+                        $invoices = $data['invoices'] ?? [];
                         @endphp
 
-                        @forelse ($clients as $client)
+                        @forelse ($invoices as $invoice)
                         <div class="list-group-item d-flex justify-content-between align-items-center">
                             <div>
                                 <strong class="text-primary">
-                                    <a href="{{ route('clients.show' , $client['id']) }}"
+                                    <a href="{{ route('invoice.show' , $invoice['invoice_id']) }}"
                                        style="text-decoration: none; color: inherit;">
-                                        {{ $client['name'] }}
+                                        {{ $invoice['client_name'] }}
                                     </a>
                                 </strong>
                                 <p class="mb-1" style="font-weight: normal;">
                                     <span></span>
                                 </p>
-                                <small class="text-muted">تاريخ الاستلام: <span class="text-success">{{ $deliveryDate }}</span></small>
+                                <small class="text-muted">تاريخ الاستلام: <span class="text-success">{{ $invoice['date_of_receipt'] }}</span></small>
                             </div>
                             <div>
                                 <span class="badge badge-pill badge-info">{{ $notification->created_at->diffInDays() }} يوم(s) مضى</span>

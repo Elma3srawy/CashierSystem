@@ -14,7 +14,7 @@ class DeliveryReminder extends Notification
     /**
      * Create a new notification instance.
      */
-    public function __construct(protected $clients , protected $deliveryDate)
+    public function __construct(protected $invoices)
     {
 
     }
@@ -30,17 +30,6 @@ class DeliveryReminder extends Notification
     }
 
     /**
-     * Get the mail representation of the notification.
-     */
-    public function toMail(object $notifiable): MailMessage
-    {
-        return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
-    }
-
-    /**
      * Get the array representation of the notification.
      *
      * @return array<string, mixed>
@@ -48,8 +37,7 @@ class DeliveryReminder extends Notification
     public function toArray(object $notifiable): array
     {
         return [
-            'clients' =>  $this->clients ,
-            'deliveryDate' => $this->deliveryDate,
+            'invoices' =>  $this->invoices,
         ];
     }
 }

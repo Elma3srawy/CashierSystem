@@ -50,7 +50,9 @@
                         <th>المنتجات</th>
                         {{-- <th>السعر</th> --}}
                         {{-- <th>المدفوع</th> --}}
+                        @can('access-superAdmin')
                         <th>الباقي</th>
+                        @endcan
                         <th>تاريخ الفاتورة</th>
                         <th>تاريخ الاستلام</th>
                         <th>تاريخ الرجوع</th>
@@ -73,7 +75,9 @@
                         </td>
                         {{-- <td>{{ $invoice->orders->sum('price') }}</td> --}}
                         {{-- <td>{{ $invoice->orders->sum('payment') }}</td> --}}
+                        @can('access-superAdmin')
                         <td>{{ $invoice->orders->sum('price') - $invoice->orders->sum('payment')  }}</td>
+                        @endcan
                         <td>{{\Carbon\Carbon::parse($invoice->created_at)->format('d-m-Y') }}</td>
                         <td>{{ $invoice->date_of_receipt ? \Carbon\Carbon::parse($invoice->date_of_receipt)->format('d-m-Y') : 'لا يوجد' }}</td>
                         <td>{{ $invoice->return_date ? \Carbon\Carbon::parse($invoice->return_date)->format('d-m-Y') : 'لا يوجد' }}</td>
@@ -84,6 +88,8 @@
                         @endif
                         <td class="text-center">
                             <div class="btn-group">
+                            @can('access-superAdmin')
+
                                 @if ($invoice->orders->sum('price') - $invoice->orders->sum('payment') <> 0 )
                                     <form action="{{ route('invoice.pay' , $invoice->id) }}" method="post">
                                         @csrf
@@ -109,6 +115,7 @@
                                         <i class="fe fe-16 fe-x-circle"></i>&nbsp;
                                     </button>
                                 @endif
+                                @endcan
                                 <a href="{{ route('invoice.print' , $invoice->id) }}" class="btn btn-sm btn-outline-primary">
                                     <i class="fe fe-16 fe-printer"></i>&nbsp;طباعة
                                 </a>
@@ -126,6 +133,7 @@
                                 {{-- <a href="{{ route('invoice.edit' , $invoice->id) }}" class="btn btn-sm btn-outline-success">
                                     <i class="fe fe-16 fe-edit"></i>&nbsp;تعديل
                                 </a> --}}
+                                @can('access-superAdmin')
                                 <form action="{{ route('invoice.destroy', $invoice->id) }}" method="post">
                                     @csrf
                                     @method("DELETE")
@@ -133,6 +141,7 @@
                                         <i class="fe fe-16 fe-trash-2"></i>&nbsp;حذف
                                     </button>
                                 </form>
+                                @endcan
                             </div>
                         </td>
                     </tr>

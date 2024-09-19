@@ -13,18 +13,18 @@ class SalesController extends Controller
     public function index()
     {
 
-        $sales = DB::table('sales')->paginate(PAGINATE);
+        $sales = $this->getSales();
         return view('sales.index', ['sales' => $sales]);
     }
     public function pending()
     {
-        $sales = DB::table('sales')->where('status' , 'pending')->paginate(PAGINATE);
+        $sales = $this->getSales('pending');
         return view('sales.pending', ['sales' => $sales]);
     }
 
     public function inactive()
     {
-        $sales = DB::table('sales')->where('status' , 'inactive')->paginate(PAGINATE);
+        $sales = $this->getSales('inactive');
         return view('sales.inactive', ['sales' => $sales]);
     }
 
@@ -48,4 +48,39 @@ class SalesController extends Controller
 
     }
 
+    public function archive(string $id)
+    {
+        DB::table('sales')->where('id' , "=" , $id)->update(['deleted_at' => now()]);
+        return back()->with('success' , 'تم ارشفة الحسابات بنجاح');
+    }
+
+    private function getSales($status = null , $archive = false)
+    {
+        $sales = DB::table('sales');
+
+        if($status){
+            $sales->where('status' , $status);
+        }
+        if($archive){
+            $sales->whereNotNull('deleted_at');
+        }else{
+            $sales->whereNull('deleted_at');
+        }
+        return $sales->paginate(PAGINATE);
+    }
+    public function archiveAll()
+    {
+        $sales = $this->getSales(archive: true);
+        return view('sales.index', ['sales' => $sales]);
+    }
+    public function archivePending()
+    {
+        $sales = $this->getSales('pending', true);
+        return view('sales.pending', ['sales' => $sales]);
+    }
+    public function archiveInactive()
+    {
+        $sales = $this->getSales('inactive' , true);
+        return view('sales.inactive', ['sales' => $sales]);
+    }
 }

@@ -31,11 +31,15 @@
                   <table class="table table-bordered">
                     <thead>
                         <th>اسم المنتج</th>
+                        @can('access-superAdmin')
                         <th>السعر</th>
                         <th>المدفوع</th>
                         <th>علية</th>
+                        @endcan
                         <th>الصورة</th>
+                        @can('access-superAdmin')
                         <th>العمليات</th>
+                        @endcan
                       </tr>
                     </thead>
                     <tbody>
@@ -61,16 +65,19 @@
                                         {{ $result }}
                                     </td>
 
-
+                                    @can('access-superAdmin')
                                     <td>{{ $order->price }}</td>
                                     <td>{{ $order->payment }}</td>
                                     <td>{{ $order->price - $order->payment }}</td>
+                                    @endcan
+
                                     @if (isset($order->product->image))<td>
                                         <a target="_blank" href="{{ Storage::url($order->product->image) }}"><img style="width: 50px;height: 50px;border: 1px solid #ccc;padding: 5px;margin: 0 auto;background-color: #f2f2f2;" src="{{ Storage::url($order->product->image) }}" alt=""></a>
                                     </td>
                                     @else
                                     <td>لا يوجد</td>
                                     @endif
+                                    @can('access-superAdmin')
                                     <td class="text-center">
                                         <div class="btn-group">
                                             <!-- Button to trigger modal -->
@@ -82,6 +89,7 @@
                                             </button> --}}
                                         </div>
                                     </td>
+                                    @endcan
                                 </tr>
                             @endforeach
                         @elseif(!is_null($order->addition_id) && $order->addition)
@@ -100,10 +108,13 @@
                                         @endphp
                                         {{ $result }}
                                     </td>
+                                    @can('access-superAdmin')
                                     <td>{{ $order->price }}</td>
                                     <td>{{ $order->payment }}</td>
                                     <td>{{ $order->price - $order->payment }}</td>
+                                    @endcan
                                     <td>{{ 'لا يوجد' }}</td>
+                                    @can('access-superAdmin')
                                     <td class="text-center">
                                         <div class="btn-group">
                                             <!-- Button to trigger modal -->
@@ -113,9 +124,9 @@
                                             {{-- <button type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#deleteModal" data-order-id="{{ $order->id }}" data-invoice-id="{{ $order->invoice_id }}" disabled>
                                                 <i class="fe fe-16 fe-trash"></i>&nbsp;حذف
                                             </button> --}}
-
                                         </div>
                                     </td>
+                                    @endcan
                                 </tr>
                             @endforeach
                         @endif

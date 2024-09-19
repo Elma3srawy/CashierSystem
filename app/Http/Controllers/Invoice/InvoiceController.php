@@ -22,7 +22,7 @@ class InvoiceController extends Controller
 
     public function __construct()
     {
-        $this->middleware(['super.admin'])->except(['create' ,'store' , 'print' , 'getSection' , 'getProductData']);
+        $this->middleware(['super.admin'])->only(['pay' , 'destroy' , 'restore']);
     }
     /**
      * Display a listing of the resource.
@@ -391,6 +391,7 @@ class InvoiceController extends Controller
     // {
     //     return view('invoices.createOrder');
     // }
+    
     public function updateOrder(Request $request)
     {
         $request->validate([
